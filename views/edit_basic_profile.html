@@ -1,0 +1,48 @@
+<div class="inmodal">
+    <form role="form" ng-attr-id={{'formBasicProfile'}} name="formBasicProfile" novalidate ng-submit="saveBasicProfile()">
+        <div class="modal-header">
+            <h4 class="modal-title">Edit Basic Profile</h4>
+            <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="text" placeholder="Full name" class="form-control" name="full_name" ng-model="user.full_name" ng-minlength="3" ng-maxlength="20" required>
+                <div class="m-t-xs" ng-show="formBasicProfile.full_name.$invalid && formBasicProfile.submitted">
+                    <small class="text-danger" ng-show="formBasicProfile.full_name.$error.required">Please input a full name</small>
+                    <small class="text-danger" ng-show="formBasicProfile.full_name.$error.minlength">Your full name is required to be at least 3 characters</small>
+                    <small class="text-danger" ng-show="formBasicProfile.full_name.$error.maxlength">Your full name cannot be longer than 20 characters</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Volunteer Type" class="form-control" name="volunteer_type" ng-model="user.volunteer_type" ng-minlength="3" ng-maxlength="20" required>
+                <div class="m-t-xs" ng-show="formBasicProfile.volunteer_type.$invalid && formBasicProfile.submitted">
+                    <small class="text-danger" ng-show="formBasicProfile.volunteer_type.$error.required">Please input a volunteer_type</small>
+                    <small class="text-danger" ng-show="formBasicProfile.volunteer_type.$error.minlength">Your volunteer_type is required to be at least 3 characters</small>
+                    <small class="text-danger" ng-show="formBasicProfile.volunteer_type.$error.maxlength">Your volunteer_type cannot be longer than 20 characters</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Head Office" class="form-control" name="head_office" ng-model="user.head_office" ng-minlength="3" ng-maxlength="20" required>
+                <div class="m-t-xs" ng-show="formBasicProfile.head_office.$invalid && formBasicProfile.submitted">
+                    <small class="text-danger" ng-show="formBasicProfile.head_office.$error.required">Please input a head office</small>
+                    <small class="text-danger" ng-show="formBasicProfile.head_office.$error.minlength">Your head office is required to be at least 3 characters</small>
+                    <small class="text-danger" ng-show="formBasicProfile.head_office.$error.maxlength">Your head office cannot be longer than 20 characters</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="About me" class="form-control" name="about_me" ng-model="user.about_me" ng-minlength="10" ng-maxlength="200" required style="height: 100px;">
+
+                </textarea>
+                <div class="m-t-xs" ng-show="formBasicProfile.about_me.$invalid && formBasicProfile.submitted">
+                    <small class="text-danger" ng-show="formBasicProfile.about_me.$error.required">Please input a about you self</small>
+                    <small class="text-danger" ng-show="formBasicProfile.about_me.$error.minlength">Your head office is required to be at least 10 characters</small>
+                    <small class="text-danger" ng-show="formBasicProfile.about_me.$error.maxlength">Your head office cannot be longer than 200 characters</small>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" ng-click="closeModal()">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+</div>

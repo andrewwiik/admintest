@@ -1,4 +1,4 @@
-<div class="wrapper wrapper-content" ng-init="user=main.user">
+<div class="wrapper wrapper-content">
     <div class="row animated fadeInRight">
         <div class="col-lg-4">
             <div class="ibox">
@@ -9,7 +9,7 @@
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
-                        <a href="#">
+                        <a href="#" ng-click="openEditBasicProfile()">
                             <i class="fa fa-pencil text-info" title="Edit"></i>
                         </a>
 
@@ -59,7 +59,7 @@
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
-                        <a href="#">
+                        <a href="#" ng-click="openEditContactDetails()">
                             <i class="fa fa-pencil text-info" title="Edit"></i>
                         </a>
 
@@ -102,7 +102,7 @@
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
-                        <a href="#">
+                        <a href="#" ng-click="openEditVoterInformation()">
                             <i class="fa fa-pencil text-info" title="Edit"></i>
                         </a>
 
@@ -173,7 +173,7 @@
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
-                        <a href="#">
+                        <a href="#" ng-click="openEditSocialMedia()">
                             <i class="fa fa-pencil text-info" title="Edit"></i>
                         </a>
 
@@ -194,4 +194,7 @@
         <!--end lg-4 third row-->
 
     </div>
+
+    <!-- Social Media links -->
+
 </div>

@@ -1,0 +1,74 @@
+<div class="inmodal">
+    <form role="form" ng-attr-id={{'formContactDetails'}} name="formContactDetails" novalidate ng-submit="saveContactDetails()">
+        <div class="modal-header">
+            <h4 class="modal-title">Edit Contact Details</h4>
+            <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="text" placeholder="Address line1" class="form-control" name="address_line1" ng-model="user.contact_details.address_line1" required>
+                <div class="m-t-xs" ng-show="formContactDetails.address_line1.$invalid && formContactDetails.submitted">
+                    <small class="text-danger" ng-show="formContactDetails.address_line1.$error.required">Must be required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Address line2" class="form-control" name="address_line2" ng-model="user.contact_details.address_line2" required>
+                <div class="m-t-xs" ng-show="formContactDetails.address_line2.$invalid && formContactDetails.submitted">
+                    <small class="text-danger" ng-show="formContactDetails.address_line2.$error.required">Must be required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="City" class="form-control" name="city" ng-model="user.contact_details.city" required>
+                <div class="m-t-xs" ng-show="formContactDetails.city.$invalid && formContactDetails.submitted">
+                    <small class="text-danger" ng-show="formContactDetails.address_line2.$error.required">Must be required</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" placeholder="state" class="form-control" name="state" ng-model="user.contact_details.state" required>
+                        <div class="m-t-xs" ng-show="formContactDetails.state.$invalid && formContactDetails.submitted">
+                            <small class="text-danger" ng-show="formContactDetails.state.$error.required">Must be required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" placeholder="zip" class="form-control" name="zip" ng-model="user.contact_details.zip" required>
+                        <div class="m-t-xs" ng-show="formContactDetails.zip.$invalid && formContactDetails.submitted">
+                            <small class="text-danger" ng-show="formContactDetails.zip.$error.required">Must be required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="City" class="form-control" name="email" ng-model="user.contact_details.email" required>
+                <div class="m-t-xs" ng-show="formContactDetails.email.$invalid && formContactDetails.submitted">
+                    <small class="text-danger" ng-show="formContactDetails.email.$error.required">Must be required</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" placeholder="City" class="form-control" name="mobile" ng-model="user.contact_details.mobile" required>
+                        <div class="m-t-xs" ng-show="formContactDetails.mobile.$invalid && formContactDetails.submitted">
+                            <small class="text-danger" ng-show="formContactDetails.mobile.$error.required">Must be required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" placeholder="City" class="form-control" name="landline" ng-model="user.contact_details.landline" required>
+                        <div class="m-t-xs" ng-show="formContactDetails.landline.$invalid && formContactDetails.submitted">
+                            <small class="text-danger" ng-show="formContactDetails.landline.$error.required">Must be required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" ng-click="closeModal()">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+</div>
