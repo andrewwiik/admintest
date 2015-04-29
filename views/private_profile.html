@@ -1,0 +1,197 @@
+<div class="wrapper wrapper-content" ng-init="user=main.user">
+    <div class="row animated fadeInRight">
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Profile Basics</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-pencil text-info" title="Edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div>
+                    <div class="ibox-content text-center">
+                        <h1>{{ user.full_name }}</h1>
+
+                        <div class="m-b-sm">
+                            <img alt="image" class="img-circle" src="{{ user.get_avatar_url }}">
+                        </div>
+                        <p class="font-bold">{{ user.volunteer_type }}</p>
+
+                        <p><i class="fa fa-map-marker text-info"></i> {{ user.head_office }} </p>
+
+                    </div>
+
+                    <div class="ibox-content profile-content text-center">
+
+                        <h5>
+                            About me
+                        </h5>
+
+                        <p>
+                            {{user.about_me}}
+                        </p>
+
+                        <button type="button" class="btn nohover btn-info btn-lg btn-block m-t user_volts_score"><i
+                            class="fa fa-bolt"></i> {{ user.volts_score }} Volts
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <!--end ibox-->
+        </div>
+        <!--end lg-4 main box-->
+
+
+        <div class="col-lg-4">
+            <div class="ibox" ng-init="contact_details = user.contact_details">
+                <div class="ibox-title">
+                    <h5>Contact Details</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-pencil text-info" title="Edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <address>
+                        <strong><span class="fa fa-home m-r-xs text-info"></span> Address</strong><br>
+                        {{contact_details.address_line1}}<br>
+                        {{contact_details.address_line2}}<br>
+                        {{contact_details.city}}, {{contact_details.state}} {{contact_details.zip}}<br>
+                    </address>
+                    <ul class="list-unstyled m-t-md">
+                        <li>
+                            <span class="fa fa-envelope m-r-xs text-info"></span>
+                            <label>Email:</label>
+                            {{contact_details.email}}
+                        </li>
+                        <li>
+                            <span class="fa fa-phone-square m-r-xs text-info"></span>
+                            <label>Mobile:</label>
+                            {{contact_details.mobile}}
+                        </li>
+                        <li>
+                            <span class="fa fa-phone-square m-r-xs text-info"></span>
+                            <label>Landline:</label>
+                            {{contact_details.landline}}
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--end ibox-->
+
+            <div class="ibox" ng-init="voter_information = user.voter_information">
+                <div class="ibox-title">
+                    <h5>Voter Information</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-pencil text-info" title="Edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <ul class="list-unstyled">
+                        <li>
+                            <label>US Senate:</label>
+                            {{voter_information.us_senate}}
+                        </li>
+                        <li>
+                            <label>US House:</label>
+                            {{voter_information.us_house}}
+                        </li>
+                        <li>
+                            <label>State Senate:</label>
+                            {{voter_information.state_senate}}
+                        </li>
+                        <li>
+                            <label>State House:</label>
+                            {{voter_information.state_house}}
+                        </li>
+                        <li>
+                            <label>Precinct:</label>
+                            {{voter_information.precinct}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--end ibox-->
+        </div>
+        <!--end lg-4 second row-->
+
+        <div class="col-lg-4">
+            <div class="ibox" ng-init="availability = user.availability">
+                <div class="ibox-title">
+                    <h5>Availability</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-pencil text-info" title="Edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <ul class="list-group clear-list">
+                        <li class="list-group-item" ng-class="{'fist-item':$first}" ng-repeat="slot in availability">
+                            <span class="pull-right">
+                                {{slot.start_time}} - {{slot.end_time}}
+                            </span>
+                            <span class="label label-info">{{slot.date | date:'EEEE'}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--end ibox-->
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Social Media</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-pencil text-info" title="Edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <ul class="list-unstyled">
+                        <li ng-repeat="social_link in user.social_media" ng-if="social_link.url!=''">
+                            <span class="fa fa-{{social_link.icon}}-square m-r-xs text-info"> </span>
+                            <label><a class="text-primary" href="{{social_link.url}}" target="_other">{{social_link.title}}</a></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--end ibox-->
+
+        </div>
+        <!--end lg-4 third row-->
+
+    </div>
+</div>
