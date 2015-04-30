@@ -102,7 +102,9 @@ function MainCtrl($scope, $modal) {
     //edit social media
     $scope.openEditSocialMedia = function () {
         var modalInstance = $modal.open({
-            templateUrl: 'views/edit_social_media.html'
+            templateUrl: 'views/edit_social_media.html',
+            controller: ModalInstanceCtrl,
+            scope: $scope
         });
     };
 }
@@ -137,6 +139,15 @@ function ModalInstanceCtrl ($scope, $modalInstance) {
             $modalInstance.close();
         } else {
             $scope.formContactDetails.submitted = true;
+        }
+    };
+
+    $scope.saveSocialMedia = function() {
+        if ($scope.formSocialMedia.$valid) {
+
+            $modalInstance.close();
+        } else {
+            $scope.formSocialMedia.submitted = true;
         }
     };
 }
