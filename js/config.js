@@ -35,6 +35,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/private_profile",
             templateUrl: "views/private_profile.html",
             data: { pageTitle: "Private Profile" }
+        }).state('index.public_profile', {
+            url: "/public_profile",
+            templateUrl: "views/public_profile.html",
+            data: { pageTitle: "public profile" }
         })
 }
 angular
