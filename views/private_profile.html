@@ -138,7 +138,7 @@
         <!--end lg-4 second row-->
 
         <div class="col-lg-4">
-            <div class="ibox" ng-init="availability = user.availability">
+            <div class="ibox">
                 <div class="ibox-title">
                     <h5>Availability</h5>
 
@@ -146,7 +146,7 @@
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
-                        <a href="#">
+                        <a href="#" ng-click="openEditAvailability()">
                             <i class="fa fa-pencil text-info" title="Edit"></i>
                         </a>
 
@@ -154,11 +154,17 @@
                 </div>
                 <div class="ibox-content">
                     <ul class="list-group clear-list">
-                        <li class="list-group-item" ng-class="{'fist-item':$first}" ng-repeat="slot in availability">
+                        <li class="list-group-item" ng-class="{'fist-item':$first}" ng-repeat="slot in user.availabilities">
                             <span class="pull-right">
                                 {{slot.start_time}} - {{slot.end_time}}
+                                &nbsp;
+                                <span ng-click="deleteSlot(slot)" title="Delete" class="fa fa-remove" style="cursor: pointer;">
+                                </span>
+                                &nbsp;
+                                <span ng-click="editSlot()" title="Edit" class="fa fa-edit" style="cursor: pointer;">
+                                </span>
                             </span>
-                            <span class="label label-info">{{slot.date | date:'EEEE'}}</span>
+                            <span class="label label-info">{{slot.day }}</span>
                         </li>
                     </ul>
                 </div>

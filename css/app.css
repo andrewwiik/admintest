@@ -1,3 +1,7 @@
 .user_volts_score {
   cursor: auto;
 }
+
+td[ng-show='showMeridian'] {
+  padding-left: 5px;
+}

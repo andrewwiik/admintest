@@ -1,0 +1,36 @@
+<div class="inmodal">
+    <form role="form" ng-attr-id={{'formAvailability'}} name="formAvailability" novalidate
+          ng-submit="saveAvailability()">
+        <div class="modal-header">
+            <h4 class="modal-title">Edit Your Schedule</h4>
+            <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" style="margin-top: 34px;">
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <select class="form-control" ng-model="availability.day"
+                                    ng-options="day as day for day in weekdays track by day">
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <timepicker ng-model="availability.start_time" hour-step="1" minute-step="15" show-meridian="true"></timepicker>
+                </div>
+                <div class="col-md-3">
+                    <timepicker ng-model="availability.end_time" hour-step="1" minute-step="15" show-meridian="true"></timepicker>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" ng-click="closeModal()">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>

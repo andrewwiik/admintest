@@ -42,20 +42,29 @@ function MainCtrl($scope, $modal) {
         precinct: "Alexandria 001"
     };
 
-    $scope.user.availability = [{
-        date: "2015-04-29",
+    $scope.weekdays = [
+        'Monday',
+        'Tuesday',
+        'wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
+    ];
+    $scope.user.availabilities = [{
+        day: "Monday",
         start_time: "8:00am",
         end_time: "9:00am"
     }, {
-        date: "2015-04-30",
+        day: "Monday",
         start_time: "8:00am",
         end_time: "9:00am"
     }, {
-        date: "2015-05-01",
+        day: "Friday",
         start_time: "8:00am",
         end_time: "9:00am"
     }, {
-        date: "2015-05-02",
+        day: "Sunday",
         start_time: "8:00am",
         end_time: "9:00am"
     }];
@@ -107,9 +116,26 @@ function MainCtrl($scope, $modal) {
             scope: $scope
         });
     };
+
+    //edit user availability
+    $scope.availability = {};
+
+    $scope.openEditAvailability = function () {
+        var modalInstance = $modal.open({
+            templateUrl: 'views/edit_availability.html',
+            controller: ModalInstanceCtrl,
+            scope: $scope,
+            size: 'lg'
+        });
+    };
+
+    $scope.deleteSlot = function(i) {
+        var index = $scope.user.availabilities.indexOf(i);
+        $scope.user.availabilities.splice(index, 1);
+    }
 }
 
-function ModalInstanceCtrl ($scope, $modalInstance) {
+function ModalInstanceCtrl ($scope, $modalInstance, $filter) {
     $scope.closeModal = function() {
         $modalInstance.close();
     };
@@ -150,6 +176,24 @@ function ModalInstanceCtrl ($scope, $modalInstance) {
             $scope.formSocialMedia.submitted = true;
         }
     };
+
+    $scope.availability.day = "Monday";
+    $scope.availability.start_time = new Date();
+    $scope.availability.end_time = new Date();
+    $scope.saveAvailability = function() {
+        if ($scope.formAvailability.$valid) {
+            var availability = {};
+            availability.day = $scope.availability.day;
+            availability.start_time = $filter('date')($scope.availability.start_time, 'shortTime');
+            availability.end_time = $filter('date')($scope.availability.end_time, 'shortTime');
+            console.log(availability);
+            $scope.user.availabilities.push(availability);
+            $modalInstance.close();
+        } else {
+            $scope.formAvailability.submitted = true;
+        }
+    };
+
 }
 
 angular
