@@ -1,38 +1,38 @@
 <div class="inmodal">
-    <form role="form" ng-attr-id={{'formBasicProfile'}} name="formBasicProfile" novalidate ng-submit="saveBasicProfile()">
+    <form role="form" ng-attr-id={{'formVoterInformation'}} name="formVoterInformation" novalidate ng-submit="saveVoterInformation()">
         <div class="modal-header">
-            <h4 class="modal-title">Edit Basic Profile</h4>
+            <h4 class="modal-title">Edit Voter Information</h4>
             <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
         </div>
         <div class="modal-body">
             <div class="form-group">
-                <input type="text" placeholder="US Senate" class="form-control" name="voter_information" ng-model="user.voter_information.us_senate" required>
-                <div class="m-t-xs" ng-show="formContactDetails.us_senate.$invalid && formContactDetails.submitted">
-                    <small class="text-danger" ng-show="formContactDetails.us_senate.$error.required">Must be required</small>
+                <input type="text" placeholder="US Senate" class="form-control" name="us_senate" ng-model="user.voter_information.us_senate" required>
+                <div class="m-t-xs" ng-show="formVoterInformation.us_senate.$invalid && formVoterInformation.submitted">
+                    <small class="text-danger" ng-show="formVoterInformation.us_senate.$error.required">Must be required</small>
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" placeholder="us_house" class="form-control" name="voter_information" ng-model="user.voter_information.us_house" required>
-                <div class="m-t-xs" ng-show="formContactDetails.us_house.$invalid && formContactDetails.submitted">
-                    <small class="text-danger" ng-show="formContactDetails.us_house.$error.required">Must be required</small>
+                <input type="text" placeholder="US House" class="form-control" name="us_house" ng-model="user.voter_information.us_house" required>
+                <div class="m-t-xs" ng-show="formVoterInformation.us_house.$invalid && formVoterInformation.submitted">
+                    <small class="text-danger" ng-show="formVoterInformation.us_house.$error.required">Must be required</small>
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" placeholder="state_senate" class="form-control" name="voter_information" ng-model="user.voter_information.state_senate" required>
-                <div class="m-t-xs" ng-show="formContactDetails.state_senate.$invalid && formContactDetails.submitted">
-                    <small class="text-danger" ng-show="formContactDetails.state_senate.$error.required">Must be required</small>
+                <input type="text" placeholder="State Senate" class="form-control" name="state_senate" ng-model="user.voter_information.state_senate" required>
+                <div class="m-t-xs" ng-show="formVoterInformation.state_senate.$invalid && formVoterInformation.submitted">
+                    <small class="text-danger" ng-show="formVoterInformation.state_senate.$error.required">Must be required</small>
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" placeholder="state_house" class="form-control" name="voter_information" ng-model="user.voter_information.state_house" required>
-                <div class="m-t-xs" ng-show="formContactDetails.state_house.$invalid && formContactDetails.submitted">
-                    <small class="text-danger" ng-show="formContactDetails.state_house.$error.required">Must be required</small>
+                <input type="text" placeholder="State House" class="form-control" name="state_house" ng-model="user.voter_information.state_house" required>
+                <div class="m-t-xs" ng-show="formVoterInformation.state_house.$invalid && formVoterInformation.submitted">
+                    <small class="text-danger" ng-show="formVoterInformation.state_house.$error.required">Must be required</small>
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" placeholder="precinct" class="form-control" name="voter_information" ng-model="user.voter_information.precinct" required>
-                <div class="m-t-xs" ng-show="formContactDetails.precinct.$invalid && formContactDetails.submitted">
-                    <small class="text-danger" ng-show="formContactDetails.precinct.$error.required">Must be required</small>
+                <input type="text" placeholder="Precinct" class="form-control" name="precinct" ng-value="user.voter_information.precinct" required>
+                <div class="m-t-xs" ng-show="formVoterInformation.precinct.$invalid && formVoterInformation.submitted">
+                    <small class="text-danger" ng-show="formVoterInformation.precinct.$error.required">Must be required</small>
                 </div>
             </div>
         </div>

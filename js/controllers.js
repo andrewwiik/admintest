@@ -78,50 +78,25 @@ function MainCtrl($scope, $modal) {
     $scope.openEditBasicProfile = function () {
         var modalInstance = $modal.open({
             templateUrl: 'views/edit_basic_profile.html',
-            controller: MainCtrl
+            controller: ModalInstanceCtrl,
+            scope: $scope
         });
-    };
-
-    $scope.saveBasicProfile = function() {
-        if ($scope.formBasicProfile.$valid) {
-            console.log('update ibox');
-        } else {
-            $scope.formBasicProfile.submitted = true;
-        }
     };
 
     $scope.openEditContactDetails = function() {
         var modalInstance = $modal.open({
             templateUrl: 'views/edit_contact_details.html',
-            controller: MainCtrl
+            controller: ModalInstanceCtrl,
+            scope: $scope
         });
-    };
-
-    $scope.saveContactDetails = function() {
-        if ($scope.formBasicProfile.$valid) {
-            console.log('update ibox');
-        } else {
-            $scope.formBasicProfile.submitted = true;
-        }
     };
 
     $scope.openEditVoterInformation = function() {
         var modalInstance = $modal.open({
-            templateUrl: 'views/edit_voter_information.html',
-            controller: MainCtrl
+            templateUrl: 'views/asdfa.html',
+            controller: ModalInstanceCtrl,
+            scope: $scope
         });
-    };
-
-    $scope.saveVoterInformation = function() {
-        if ($scope.formBasicProfile.$valid) {
-            console.log('update ibox');
-        } else {
-            $scope.formBasicProfile.submitted = true;
-        }
-    };
-
-    $scope.closeModal = function() {
-        console.log('close modal');
     };
 
     //edit social media
@@ -132,6 +107,41 @@ function MainCtrl($scope, $modal) {
     };
 }
 
+function ModalInstanceCtrl ($scope, $modalInstance) {
+    $scope.closeModal = function() {
+        $modalInstance.close();
+    };
+
+    $scope.saveBasicProfile = function() {
+        if ($scope.formBasicProfile.$valid) {
+            $modalInstance.close();
+        } else {
+            $scope.formBasicProfile.submitted = true;
+        }
+    };
+
+    $scope.saveVoterInformation = function() {
+        if ($scope.formVoterInformation.$valid) {
+            var formData = $('#formVoterInformation').serializeArray();
+            angular.forEach(formData, function(data, i) {
+                $scope.user.voter_information[data.name] = data.value
+            });
+            $modalInstance.close();
+        } else {
+            $scope.formVoterInformation.submitted = true;
+        }
+    };
+
+    $scope.saveContactDetails = function() {
+        if ($scope.formContactDetails.$valid) {
+            $modalInstance.close();
+        } else {
+            $scope.formContactDetails.submitted = true;
+        }
+    };
+}
+
 angular
     .module('inspinia')
-    .controller('MainCtrl', MainCtrl);
+    .controller('MainCtrl', MainCtrl)
+    .controller('ModalInstanceCtrl', ModalInstanceCtrl);
