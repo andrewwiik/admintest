@@ -1,0 +1,111 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>Create New Office</h2>
+        <small>Create a new office for the organization</small>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Supervising office</label>
+                            <div class="col-sm-10">
+                                <select id="offices"
+                                        class="form-control"
+                                        name="supervising_office"
+                                        data-type="ou-select"
+                                        ng-model="supervising_office">
+                                    <option ng-repeat="office in offices"
+                                            value="{{office.value}}"
+                                            data-type="{{office['data-type']}}"
+                                            data-depth="{{office['data-depth']}}"
+                                            data-avatar="{{office['data-avatar']}}">
+                                        {{office.label}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">State</label>
+
+                            <div class="col-sm-10">
+                                <select id="state" class="form-control select2-container"
+                                        name="state"
+                                        ng-model="state"
+                                        ng-change="updateState()"
+                                        ng-options="s.title for s in states track by s.value">
+                                    <option value=""> ---- </option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#state").select2();
+    });
+
+    $(function() {
+        var $ouSelector = $('select[data-type=ou-select]');
+        var $userTypeSelector = $('select[data-type=user-type-select]');
+
+        var $userTypeOptions = $userTypeSelector.find('option').clone();
+
+        $ouSelector.select2({
+            formatResult: function(state) {
+                if (!state.id) {
+                    return state.text;
+                }
+                var $element = $(state.element);
+                var depth = +$element.data('depth');
+                var $avatar = $('<img>').attr('src', $element.data('avatar')).css('height', '16px');
+                var $container = $('<div></div>').css('padding-left', depth * 20 + 'px');
+                $container.append($avatar);
+                $container.append(' ');
+                $container.append(state.text);
+                return $container;
+            },
+            formatSelection: function(state) {
+                if (!state.id) {
+                    return state.text;
+                }
+                var $element = $(state.element);
+                var depth = +$element.data('depth');
+                var $avatar = $('<img>').attr('src', $element.data('avatar')).css('height', '16px');
+                var $container = $('<div></div>');
+                $container.append($avatar);
+                $container.append(' ');
+                $container.append(state.text);
+                return $container;
+            }
+        });
+
+        function onOUChange() {
+            var option = $ouSelector[0].options[$ouSelector[0].selectedIndex];
+            var value = $(option).attr('data-type');
+            $userTypeSelector.find('option').remove();
+            $userTypeOptions.each(function() {
+                var $option = $(this);
+                var types = $option.attr('data-types').split(' ');
+                if (types.indexOf(value) !== -1) {
+                    var $newOption = $option.clone();
+                    $userTypeSelector.append($newOption);
+                    $userTypeSelector.val($option.attr('value'));
+                }
+            });
+        }
+
+        $ouSelector.on('change', onOUChange);
+        onOUChange();
+    });
+
+</script>

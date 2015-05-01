@@ -132,7 +132,98 @@ function MainCtrl($scope, $modal) {
     $scope.deleteSlot = function(i) {
         var index = $scope.user.availabilities.indexOf(i);
         $scope.user.availabilities.splice(index, 1);
+    };
+
+    $scope.states = [{
+        title: 'One',
+        value: 1
+    }, {
+        title: 'Two',
+        value: 2
+    }, {
+        title: 'Three',
+        value: 3
+    }, {
+        title: 'Four',
+        value: 4
+    }];
+
+    $scope.updateState = function() {
+        console.log(this.state);
     }
+
+    $scope.offices = [
+        {
+            "label" : "Pedro for President",
+            "value": "2",
+            "data-type": "1",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "0"
+        },
+        {
+            "label" : "West Region",
+            "value": "3",
+            "data-type": "2",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "1"
+        },
+        {
+            "label" : "Ann Arbor Area",
+            "value": "4",
+            "data-type": "3",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "2"
+        },
+        {
+            "label" : "Austin Area",
+            "value": "7",
+            "data-type": "3",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "2"
+        },
+        {
+            "label" : "Dallas Area",
+            "value": "8",
+            "data-type": "3",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "2"
+        },
+        {
+            "label" : "Fort Worth Area",
+            "value": "12",
+            "data-type": "3",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "2"
+        },
+        {
+            "label" : "El Paso Area",
+            "value": "22",
+            "data-type": "3",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "2"
+        },
+        {
+            "label" : "East Region",
+            "value": "13",
+            "data-type": "2",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "1"
+        },
+        {
+            "label" : "New York Area",
+            "value": "14",
+            "data-type": "3",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "2"
+        },
+        {
+            "label" : "DC Area",
+            "value": "15",
+            "data-type": "3",
+            "data-avatar": "img/building_100.png",
+            "data-depth": "2"
+        }
+    ];
 }
 
 function ModalInstanceCtrl ($scope, $modalInstance, $filter) {
@@ -151,7 +242,7 @@ function ModalInstanceCtrl ($scope, $modalInstance, $filter) {
     $scope.saveVoterInformation = function() {
         if ($scope.formVoterInformation.$valid) {
             var formData = $('#formVoterInformation').serializeArray();
-            angular.forEach(formData, function(data, i) {
+            angular.forEach(formData, function(data) {
                 $scope.user.voter_information[data.name] = data.value
             });
             $modalInstance.close();
@@ -186,7 +277,6 @@ function ModalInstanceCtrl ($scope, $modalInstance, $filter) {
             availability.day = $scope.availability.day;
             availability.start_time = $filter('date')($scope.availability.start_time, 'shortTime');
             availability.end_time = $filter('date')($scope.availability.end_time, 'shortTime');
-            console.log(availability);
             $scope.user.availabilities.push(availability);
             $modalInstance.close();
         } else {
