@@ -43,6 +43,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/create_ou",
             templateUrl: "views/create_ou.html",
             data: { pageTitle: "create_ou" }
+        }).state('index.list_offices', {
+            url: "/list_offices",
+            templateUrl: "views/list_offices.html",
+            data: { pageTitle: "list_offices" }
         })
 }
 angular
